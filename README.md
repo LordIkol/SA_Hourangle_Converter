@@ -29,7 +29,7 @@ highlighted in Red would be the Start of Sector 9 (Sector 9 Value 0) Green would
 
 ### Finally set the Dec Value 
 **As you can see in the Picture the symbol for Dec rotation is Red and Counterclockwise so we turn that way**  
-**If you turn around your objective since you have negative Dec the app will switch rotation just enter the dec value with a minus** 
+**If you turn around your objective since you have negative Dec the app will switch rotation just enter the dec value with a minus**    
 ![](https://i.postimg.cc/vHLzFMFV/HA-Example-Normal.png)
 ![](https://i.postimg.cc/4NWbWPTC/HA-DECPic.png)
 
