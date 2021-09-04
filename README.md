@@ -4,6 +4,8 @@ app to replace timelapse video for star adventurer absolute positioning system d
 [Youtube: How to Build](https://www.youtube.com/watch?v=JfTsTZkUOjo&lc=UgzkQyKQ-kzPkAnUjvR4AaABAg.9PsMK1N4uUl9RphunNc_UU)   
 [How to use](https://www.youtube.com/watch?v=tNPIMKOB9k4&t=0s)   
 
+apk file is here: https://github.com/LordIkol/SA_Hourangle_Converter/tree/master/app/release
+
 Long Line to the left of the numbers 1-12 are start of that Sector 
 Values are the small lines between them. if its exactly on the Long line Value is 0 
 
