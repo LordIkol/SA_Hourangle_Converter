@@ -11,6 +11,7 @@ Values are the small lines between them. if its exactly on the Long line Value i
 
 # Setup
 ### Starting Sector: 
+**To get the starting sector you have to level your Mount check Kamils video at 12 Minutes https://youtu.be/JfTsTZkUOjo?t=718
 **If the below Picture is your Starting Sector you would put Starting Sector 9 and Value 1 into the App**   
        
 ![](https://i.postimg.cc/VkDpstpq/Ha-9-1.png)
