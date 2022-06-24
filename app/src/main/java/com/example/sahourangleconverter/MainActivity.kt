@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate((layoutInflater))
         setContentView(binding.root)
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("mypref", 0)
         binding.tbStartingSection.setText(sharedPref.getString("StartSector", "1"))
         binding.tbStartingvalue.setText(sharedPref.getString("StartValue", "0"))
+        binding.toggleButton.isChecked = sharedPref.getBoolean("hemisphere",false)
         var img = getDrawable(R.drawable.ic_baseline_rotate_right_24)
 
         binding.btnSaveDefault.setOnClickListener {
@@ -29,8 +31,10 @@ class MainActivity : AppCompatActivity() {
             val editor = sharedPref.edit()
             editor.putString("StartSector", binding.tbStartingSection.getText().toString());
             editor.putString("StartValue", binding.tbStartingvalue.getText().toString());
+            editor.putBoolean("hemisphere",binding.toggleButton.isChecked)
             editor.commit();
         }
+
 
         binding.button3.setOnClickListener {
             var jsonObject= JSONObject()
@@ -42,6 +46,9 @@ class MainActivity : AppCompatActivity() {
             var myDec: Float = 0f
             var decClockwise: Boolean = false
             var decRotation = "Counterclockwise"
+            var southernHem: Boolean = false
+
+            southernHem = binding.toggleButton.isChecked
 
             try{
                 myHours =  binding.tbHours.getText().toString().toInt()
@@ -120,30 +127,56 @@ class MainActivity : AppCompatActivity() {
             dialPositions.put(jsonObject)
 
 
+            if(southernHem) {
+                for (i in 0..360) {
 
-            for (i in 0..360) {
+                    if (LastSection == 1 && LastValue == 0f) {
+                        CurrentSection = 12;
+                        CurrentValue = 14.5f
+                    }
+                    else if (LastValue == 0f){
+                        CurrentSection = LastSection -1
+                        CurrentValue = 14.5f
+                    }
+                    else
+                    {
+                        CurrentSection = LastSection
+                        CurrentValue = LastValue - 0.5f
+                    }
+                    var jsonObject= JSONObject()
+                    jsonObject.put("Section",CurrentSection)
+                    jsonObject.put("Value",CurrentValue)
+                    dialPositions.put(jsonObject)
+                    LastSection = CurrentSection
+                    LastValue = CurrentValue
 
-                if (LastSection == 12 && LastValue == 14.5f) {
-                    CurrentSection = 1;
-                    CurrentValue = 0f
                 }
-                else if (LastValue == 14.5f){
-                    CurrentSection = LastSection + 1
-                    CurrentValue = 0f
-                }
-                else
-                {
-                    CurrentSection = LastSection
-                    CurrentValue = LastValue + 0.5f
-                }
-                var jsonObject= JSONObject()
-                jsonObject.put("Section",CurrentSection)
-                jsonObject.put("Value",CurrentValue)
-                dialPositions.put(jsonObject)
-                LastSection = CurrentSection
-                LastValue = CurrentValue
+            }else{
+                for (i in 0..360) {
 
+                    if (LastSection == 12 && LastValue == 14.5f) {
+                        CurrentSection = 1;
+                        CurrentValue = 0f
+                    }
+                    else if (LastValue == 14.5f){
+                        CurrentSection = LastSection + 1
+                        CurrentValue = 0f
+                    }
+                    else
+                    {
+                        CurrentSection = LastSection
+                        CurrentValue = LastValue + 0.5f
+                    }
+                    var jsonObject= JSONObject()
+                    jsonObject.put("Section",CurrentSection)
+                    jsonObject.put("Value",CurrentValue)
+                    dialPositions.put(jsonObject)
+                    LastSection = CurrentSection
+                    LastValue = CurrentValue
+
+                }
             }
+
 
             val Dialpos: Int = (((myHours *60) + myMinutes)/4)
             Log.d("DialPos", Dialpos.toString());

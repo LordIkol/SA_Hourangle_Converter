@@ -38,6 +38,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -90,12 +91,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" android:orientation="horizontal" android:layout_margin="10dp" >
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Calculate" />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Calculate" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/toogle_switch"
+            android:text=""
+            android:textOff=""
+            android:textOn="" />
+
     </LinearLayout>
 
     <LinearLayout
