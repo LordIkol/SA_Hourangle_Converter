@@ -186,9 +186,16 @@ class MainActivity : AppCompatActivity() {
 
             binding.ResultSector.setText("${PrintSector}")
             binding.ResultMarking.setText("${PrintValue}")
-            if(decClockwise){
+            if(decClockwise and !southernHem) {
                 img = getDrawable(R.drawable.ic_baseline_rotate_right_32)
-            }else{
+            }
+            else if(decClockwise and southernHem){
+                img = getDrawable(R.drawable.ic_baseline_rotate_left_32)
+            }
+            else if(!decClockwise and southernHem){
+                img = getDrawable(R.drawable.ic_baseline_rotate_right_32)
+            }
+            else{
                 img = getDrawable(R.drawable.ic_baseline_rotate_left_32)
             }
             binding.ResultAngle.setCompoundDrawablesWithIntrinsicBounds(null,null,null,img)
